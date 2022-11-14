@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pterodactyl-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+  #   kubernetes.io/ingress.class: traefik-internal # uncomment if you use annotations
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: pterodactyl.evasquezapplaudo.ga
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pterodactyl
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - pterodactyl.evasquezapplaudo.ga
+    secretName: pterodactyl-cert-tls
