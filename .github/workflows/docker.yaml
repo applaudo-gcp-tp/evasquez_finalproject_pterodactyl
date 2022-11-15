@@ -25,15 +25,31 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCLOUD_SERVICE_KEY }}'
 
-      - name: 🚀 Build and Push Image to GCR
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Release development build
+        uses: docker/build-push-action@v2
+        if: "contains(github.ref, 'develop')"
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false         #${{ github.event_name != 'pull_request' }}
+          platforms: linux/amd64,linux/arm64
+          tags: pterodactyl:dev
+
+      - name: 🚀 Push Image to GCR
         uses: RafikFarhad/push-to-gcr-github-action@v5-beta
         with:
+          push_only: true
           registry: gcr.io
           project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
           image_name: pterodactyl
           image_tag: dev
-          dockerfile: ./Dockerfile
-          context: .
+
 
       # - name: Release production build
       #   uses: docker/build-push-action@v2
@@ -46,15 +62,3 @@ jobs:
       #     tags: ${{ steps.docker_meta.outputs.tags }}
       #     labels: ${{ steps.docker_meta.outputs.labels }}
 
-      # - name: Release development build
-      #   uses: docker/build-push-action@v2
-      #   if: "contains(github.ref, 'develop')"
-      #   with:
-      #     context: .
-      #     file: ./Dockerfile
-      #     push: ${{ github.event_name != 'pull_request' }}
-      #     platforms: linux/amd64,linux/arm64
-      #     tags: ${{ steps.docker_meta.outputs.tags }}
-      #     labels: ${{ steps.docker_meta.outputs.labels }}
-      #     cache-from: type=gha
-      #     cache-to: type=gha,mode=max
