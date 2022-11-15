@@ -49,12 +49,12 @@ spec:
         - name: QUEUE_DRIVER
           value: "redis" 
         - name: REDIS_HOST
-          value: "redis-server-master-0.redis-server-headless.redis.svc.cluster.local" # redis server ip or dns
-        - name: REDIS_PASSWORD
-          valueFrom: 
-            secretKeyRef: 
-              key: REDIS_PASSWORD_PROD
-              name: pterodactyl-panel
+          value: "redis.pterodactyl.svc.cluster.local" # redis server ip or dns
+        # - name: REDIS_PASSWORD
+        #   valueFrom: 
+        #     secretKeyRef: 
+        #       key: REDIS_PASSWORD_PROD
+        #       name: pterodactyl-panel
         - name: DB_HOST
           value: "127.0.0.1" # database server ip or dns
         - name: DB_PORT
