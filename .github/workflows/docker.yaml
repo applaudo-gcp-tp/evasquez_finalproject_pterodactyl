@@ -3,7 +3,6 @@ name: Publish Docker Image
 on:
   push:
     branches:
-      - "develop"
       - "release/v*"
 
   workflow_dispatch:
@@ -12,9 +11,6 @@ jobs:
   push:
     name: Push Image to GCR
     runs-on: ubuntu-20.04
-    # Always run against a tag, even if the commit into the tag has [docker skip]
-    # within the commit message.
-    if: "!contains(github.ref, 'develop') || (!contains(github.event.head_commit.message, 'skip docker') && !contains(github.event.head_commit.message, 'docker skip'))"
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
@@ -31,7 +27,7 @@ jobs:
           registry: gcr.io
           project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
           image_name: pterodactyl
-          image_tag: dev
+          image_tag: ${{ github.ref_name }}
           dockerfile: ./Dockerfile
           context: .
 
