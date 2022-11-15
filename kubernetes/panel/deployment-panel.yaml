@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: pterodactyl
-        image: gcr.io/applaudo-final-project-ed/pterodactyl:v1.10.6
+        image: ghcr.io/pterodactyl/panel:latest
         resources:
           requests:
             memory: "128Mi"
