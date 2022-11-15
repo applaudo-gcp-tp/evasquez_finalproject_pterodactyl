@@ -1,14 +1,16 @@
 name: Lint
 
-on:
-  push:
-    branches:
-      - "develop"
-      - "1.0-develop"
-  pull_request:
-    branches:
-      - "develop"
-      - "1.0-develop"
+# on:
+#   push:
+#     branches:
+#       - "develop"
+#       - "1.0-develop"
+#   pull_request:
+#     branches:
+#       - "develop"
+#       - "1.0-develop"
+
+  workflow_dispatch:
 
 jobs:
   lint:

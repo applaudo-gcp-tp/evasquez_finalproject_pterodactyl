@@ -6,6 +6,8 @@ on:
       - "develop"
       - "release/v*"
 
+  workflow_dispatch:
+
 jobs:
   push:
     name: Push Image to GitHub Packages
@@ -29,7 +31,7 @@ jobs:
           registry: gcr.io
           project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
           image_name: pterodactyl
-          image_tag: ${{ github.ref_name }}
+          image_tag: dev
           dockerfile: ./Dockerfile
           context: .
 
