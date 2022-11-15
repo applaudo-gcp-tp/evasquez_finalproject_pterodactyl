@@ -49,7 +49,7 @@ spec:
         - name: QUEUE_DRIVER
           value: "redis" 
         - name: REDIS_HOST
-          value: ""# redis server ip or dns
+          value: "redis-server-master-0.redis-server-headless.redis.svc.cluster.local" # redis server ip or dns
         - name: REDIS_PASSWORD
           value: "nBqpBq3H2t"
           # valueFrom: 
