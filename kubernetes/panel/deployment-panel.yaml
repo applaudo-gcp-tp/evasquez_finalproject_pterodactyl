@@ -51,10 +51,11 @@ spec:
         - name: REDIS_HOST
           value: "redis-server-master-0.redis-server-headless.redis.svc.cluster.local" # redis server ip or dns
         - name: REDIS_PASSWORD
-          valueFrom: 
-            secretKeyRef: 
-              key: REDIS_PASSWORD_PROD
-              name: pterodactyl-panel
+          value: ""
+          # valueFrom: 
+          #   secretKeyRef: 
+          #     key: REDIS_PASSWORD_PROD
+          #     name: pterodactyl-panel
         - name: DB_HOST
           value: "127.0.0.1" # database server ip or dns
         - name: DB_PORT
@@ -82,7 +83,7 @@ spec:
         command:
           - "/cloud_sql_proxy"
           - "-log_debug_stdout"
-          - "-instances=applaudo-final-project-ed:us-central1:production-my-sql=tcp:3306"
+          - "-instances=applaudo-final-project-ed:us-central1:dev-my-sql=tcp:3306"
           - "-credential_file=/secrets/sql-client"
         securityContext:
           runAsNonRoot: true
