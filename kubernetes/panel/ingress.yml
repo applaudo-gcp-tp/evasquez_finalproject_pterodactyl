@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: pterodactyl.evasquezapplaudo.tk
+  - host: pterodactyl.evasquezapplaudo.ga
     http:
       paths:
       - path: /
@@ -20,5 +20,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - pterodactyl.evasquezapplaudo.tk
+    - pterodactyl.evasquezapplaudo.ga
     secretName: pterodactyl-cert-tls
