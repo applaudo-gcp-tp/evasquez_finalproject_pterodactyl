@@ -83,7 +83,7 @@ spec:
         command:
           - "/cloud_sql_proxy"
           - "-log_debug_stdout"
-          - "-instances=applaudo-final-project-ed:us-central1:dev-my-sql=tcp:3306"
+          - "-instances=applaudo-final-project-dev:us-central1:dev-my-sql=tcp:3306"
           - "-credential_file=/secrets/sql-client"
         securityContext:
           runAsNonRoot: true
