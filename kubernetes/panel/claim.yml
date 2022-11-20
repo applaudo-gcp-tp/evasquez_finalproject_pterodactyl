@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pv
+  name: nfs-pv-p1
 spec:
   capacity:
     storage: 1Gi
@@ -30,7 +30,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pv
+  name: nfs-pv-p2
 spec:
   capacity:
     storage: 500Mi
@@ -59,7 +59,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pv
+  name: nfs-pv-p3
 spec:
   capacity:
     storage: 100Mi
@@ -88,7 +88,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pv
+  name: nfs-pv-p4
 spec:
   capacity:
     storage: 1Gi
