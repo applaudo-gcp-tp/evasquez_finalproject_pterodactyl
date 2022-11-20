@@ -8,7 +8,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-server.nfs-server.svc.cluster.local
+    server: nfs-server.nsf-server.svc.cluster.local
     path: "/"
 
 ---
@@ -37,7 +37,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-server.nfs-server.svc.cluster.local
+    server: nfs-server.nsf-server.svc.cluster.local
     path: "/"
 
 ---
@@ -66,7 +66,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-server.nfs-server.svc.cluster.local
+    server: nfs-server.nsf-server.svc.cluster.local
     path: "/"
 
 ---
@@ -95,7 +95,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-server.nfs-server.svc.cluster.local
+    server: nfs-server.nsf-server.svc.cluster.local
     path: "/"
 
 ---
